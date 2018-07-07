@@ -14,9 +14,11 @@ export class AppComponent {
   public rotateX: number;
   public rotateY: number;
   public rotateZ: number;
+  public animation: any;
 
   constructor(private el: ElementRef) {
-    this.setRoomParams();
+    this.setTableParams();
+    this.runAnimation();
   }
 
   perspectiveValueChanged(event: any) {
@@ -89,5 +91,35 @@ export class AppComponent {
 
   get isRoomScene() {
     return this.el.nativeElement.children.item('.scene').classList.value.indexOf('room') !== -1;
+  }
+
+  runAnimation() {
+    let goDown = false;
+    this.animation = setInterval(() => {
+      if (goDown) {
+        this.translateYPx--;
+        if (this.translateYPx < 1) {
+          goDown = false;
+        }
+      } else {
+        this.translateYPx++;
+        if (this.translateYPx > 50) {
+          goDown = true;
+        }
+      }
+    }, 50);
+  }
+
+  stopAnimation() {
+    clearInterval(this.animation);
+    this.animation = null;
+  }
+
+  toggleAnimation() {
+    if (this.animation) {
+      this.stopAnimation();
+    } else {
+      this.runAnimation();
+    }
   }
 }

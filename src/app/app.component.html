@@ -1,4 +1,4 @@
-<div class="scene room" [ngStyle]="{ 'perspective': perspectiveValue + 'px', 'perspective-origin': perspectiveOriginX + '% ' + perspectiveOriginY + '%' }">
+<div class="scene table" [ngStyle]="{ 'perspective': perspectiveValue + 'px', 'perspective-origin': perspectiveOriginX + '% ' + perspectiveOriginY + '%' }">
     <div class="box" [ngStyle]="{ 'transform': 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) translateY(-' + translateYPx + 'px)' }"></div>
     <div class="box box-reflection" [ngStyle]="{ 'transform': 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) translateY(' + (translateYPx + 100) + 'px)' }"></div>
 </div>
@@ -19,4 +19,5 @@
     <mat-slider class="width100p" [(ngModel)]="rotateZ" [max]="180" [min]="-180" [step]="1" (input)="rotateZValueChanged($event)"></mat-slider>
     <button mat-button (click)="setDefaultValues()">Set Default values</button>
     <button mat-button (click)="toggleScene()">Toggle scene</button>
+    <button mat-button (click)="toggleAnimation()">Toggle animation</button>
 </div>

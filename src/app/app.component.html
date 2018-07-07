@@ -1,13 +1,21 @@
 <div class="table" [ngStyle]="{ 'perspective': perspectiveValue + 'px', 'perspective-origin': perspectiveOriginX + '% ' + perspectiveOriginY + '%' }">
-    <div class="box"></div>
-    <div class="box box-reflection"></div>
+    <div class="box" [ngStyle]="{ 'transform': 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) translateY(-' + translateYPx + 'px)' }"></div>
+    <div class="box box-reflection" [ngStyle]="{ 'transform': 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) translateY(' + (translateYPx + 100) + 'px)' }"></div>
 </div>
 <div>
     <h3>Perspective: {{perspectiveValue}}</h3>
     <mat-slider class="width100p" [(ngModel)]="perspectiveValue" [max]="1000" [min]="0" [step]="1" (input)="perspectiveValueChanged($event)"></mat-slider>
     <h3>Perspective Origin X: {{perspectiveOriginX}}</h3>
-    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginX" (input)="perspectiveOriginXValueChanged($event)"></mat-slider>
+    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginX" [max]="100" [min]="0" [step]="1" (input)="perspectiveOriginXValueChanged($event)"></mat-slider>
     <h3>Perspective Origin Y: {{perspectiveOriginY}}</h3>
-    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginY" (input)="perspectiveOriginYValueChanged($event)"></mat-slider>
+    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginY" [max]="100" [min]="0" [step]="1" (input)="perspectiveOriginYValueChanged($event)"></mat-slider>
+    <h3>Translate Y: {{translateYPx}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="translateYPx" [max]="100" [min]="0" [step]="1" (input)="translateYPxValueChanged($event)"></mat-slider>
+    <h3>Rotate X: {{rotateX}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="rotateX" [max]="180" [min]="-180" [step]="1" (input)="rotateXValueChanged($event)"></mat-slider>
+    <h3>Rotate Y: {{rotateY}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="rotateY" [max]="180" [min]="-180" [step]="1" (input)="rotateYValueChanged($event)"></mat-slider>
+    <h3>Rotate Z: {{rotateZ}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="rotateZ" [max]="180" [min]="-180" [step]="1" (input)="rotateZValueChanged($event)"></mat-slider>
     <button mat-button (click)="setDefaultValues()">Set Default values</button>
 </div>

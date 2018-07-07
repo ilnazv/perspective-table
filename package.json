@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod --base-href https://ilnazv.github.io/perspective-table/ && ngh -r https://github.com/ilnazv/perspective-table.git --no-silent"
   },
   "private": true,
   "dependencies": {

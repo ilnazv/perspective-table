@@ -16,11 +16,12 @@
         align-items: center;
         display: flex;
         justify-content: center;
-        background-image: url('/assets/table.jpg');
+        background-image: url('../assets/table.jpg');
         width: 700px;
         height: 700px;
 
         div.box {
+            border-radius: 4px;
             background-color: rgb(37, 132, 177);
             height: 100px;
             width: 100px;

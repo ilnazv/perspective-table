@@ -1,0 +1,13 @@
+<div class="table" [ngStyle]="{ 'perspective': perspectiveValue + 'px', 'perspective-origin': perspectiveOriginX + '% ' + perspectiveOriginY + '%' }">
+    <div class="box"></div>
+    <div class="box box-reflection"></div>
+</div>
+<div>
+    <h3>Perspective: {{perspectiveValue}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="perspectiveValue" [max]="1000" [min]="0" [step]="1" (input)="perspectiveValueChanged($event)"></mat-slider>
+    <h3>Perspective Origin X: {{perspectiveOriginX}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginX" (input)="perspectiveOriginXValueChanged($event)"></mat-slider>
+    <h3>Perspective Origin Y: {{perspectiveOriginY}}</h3>
+    <mat-slider class="width100p" [(ngModel)]="perspectiveOriginY" (input)="perspectiveOriginYValueChanged($event)"></mat-slider>
+    <button mat-button (click)="setDefaultValues()">Set Default values</button>
+</div>

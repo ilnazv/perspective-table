@@ -1,0 +1,37 @@
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+:host {
+    display: flex;
+    .width100p {
+        width: 100%;
+    }
+    div.table {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        background-image: url('/assets/table.jpg');
+        width: 700px;
+        height: 700px;
+
+        div.box {
+            background-color: rgb(37, 132, 177);
+            height: 100px;
+            width: 100px;
+            transform: rotateY(-29deg);
+
+            &-reflection {
+                position: absolute;
+                background: linear-gradient(to bottom, rgba(37, 133, 177, 0.5), rgba(37, 133, 177, 0));
+                // transform: skewY(13deg) rotateY(-29deg) translateY(120px);
+                transform: rotateY(-29deg) translateY(120px);
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +15,8 @@ export class AppComponent {
   public rotateY: number;
   public rotateZ: number;
 
-  constructor() {
-    this.setDefaultValues();
+  constructor(private el: ElementRef) {
+    this.setRoomParams();
   }
 
   perspectiveValueChanged(event: any) {
@@ -48,12 +48,46 @@ export class AppComponent {
   }
 
   setDefaultValues() {
-    this.perspectiveValue = 400;
+    if (this.isRoomScene) {
+      this.setRoomParams();
+    } else {
+      this.setTableParams();
+    }
+  }
+
+  setRoomParams() {
+    this.perspectiveValue = 500;
     this.perspectiveOriginX = 50;
     this.perspectiveOriginY = 50;
-    this.translateYPx = 0;
+    this.translateYPx = 2;
     this.rotateX = 0;
     this.rotateY = 0;
     this.rotateZ = 0;
+  }
+
+  setTableParams() {
+    this.perspectiveValue = 500;
+    this.perspectiveOriginX = 40;
+    this.perspectiveOriginY = 30;
+    this.translateYPx = 2;
+    this.rotateX = -5;
+    this.rotateY = -30;
+    this.rotateZ = 0;
+  }
+
+  toggleScene() {
+    if (this.isRoomScene) {
+      this.el.nativeElement.children.item('.scene').classList.remove('room');
+      this.el.nativeElement.children.item('.scene').classList.add('table');
+      this.setTableParams();
+    } else {
+      this.el.nativeElement.children.item('.scene').classList.remove('table');
+      this.el.nativeElement.children.item('.scene').classList.add('room');
+      this.setRoomParams();
+    }
+  }
+
+  get isRoomScene() {
+    return this.el.nativeElement.children.item('.scene').classList.value.indexOf('room') !== -1;
   }
 }

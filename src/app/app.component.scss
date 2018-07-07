@@ -12,13 +12,25 @@
     .width100p {
         width: 100%;
     }
-    div.table {
+    div.scene {
         align-items: center;
         display: flex;
         justify-content: center;
-        background-image: url('../assets/table.jpg');
         width: 700px;
         height: 700px;
+
+        &.room {
+            background-image: url('../assets/room.jpg');
+            background-size: 800px;
+            background-repeat: no-repeat;
+        }
+
+        &.table {
+            background-image: url('../assets/table.jpg');
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
 
         div.box {
             border-radius: 4px;
